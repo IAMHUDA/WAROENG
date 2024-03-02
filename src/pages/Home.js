@@ -135,6 +135,7 @@ export default class Home extends Component {
               <Col className="mt-3">
                 <h4>
                   <strong>Daftar Produk</strong>
+                  <marquee>DONT WORRY IF YOU STAY HUNGRY</marquee>
                 </h4>
                 <hr />
                 <Row className="overflow-auto menu">
