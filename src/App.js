@@ -5,9 +5,12 @@ import {
   Route,
 } from "react-router-dom";
 import {  NavbarComponent } from './components'
-import { Home, Sukses } from './pages'
+import { Home,Signup, Sukses,Login } from './pages'
 import axios from 'axios';
 import { API_URL } from './utils/constants';
+
+
+
 
 export default class App extends Component {
   constructor(props) {
@@ -38,7 +41,9 @@ export default class App extends Component {
           <NavbarComponent />
           <main>
             <Switch>
-              <Route  path="/" component={Home} exact/>
+              <Route  path="/" component={Login} exact/>
+              <Route path="/Signup" component={Signup} exact/>
+              <Route  path="/home" component={Home} exact/>
               <Route  path="/sukses" component={Sukses} exact/>
             </Switch>
           </main>
