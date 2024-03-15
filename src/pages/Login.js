@@ -24,7 +24,7 @@ class Login extends Component {
         event.preventDefault();
         const errors = Validation(this.state);
         this.setState({ errors });
-
+    
         if (errors.email === '' && errors.password === '') {
             const userData = {
                 email: this.state.email,
@@ -33,8 +33,14 @@ class Login extends Component {
             axios.post('http://localhost:8081/login', userData)
                 .then(res => {
                     console.log(res);
-                    this.setState({ loginSuccess: true });
-                    this.props.history.push('/home');
+                    if (res.data === "User not found" || res.data === "Invalid password") {
+                        // Menangani pesan kesalahan dari server
+                        this.setState({ errors: { login: res.data } });
+                    } else {
+                        // Login berhasil, arahkan pengguna ke halaman home
+                        this.setState({ loginSuccess: true });
+                        this.props.history.push('/home');
+                    }
                 })
                 .catch(err => console.log(err));
         }
